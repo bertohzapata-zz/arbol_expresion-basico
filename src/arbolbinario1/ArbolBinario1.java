@@ -28,7 +28,7 @@ public class ArbolBinario1 {
         
         Nodo raiz = new Nodo(subIzq, "*", subDer);
         
-        preOrden(raiz);
+        ImprimirAlRecorrer(raiz);
         
     }
     
@@ -37,11 +37,11 @@ public class ArbolBinario1 {
     
     
     
-    private static void preOrden(Nodo raiz) {
+    private static void ImprimirAlRecorrer(Nodo raiz) {
         if (raiz != null) {
+            ImprimirAlRecorrer(raiz.getIzquierdo());
             System.out.print(raiz.getDato() + " ");
-            preOrden(raiz.getIzquierdo());
-            preOrden(raiz.gerDerecho());
+            ImprimirAlRecorrer(raiz.gerDerecho());
         }
     }
     
