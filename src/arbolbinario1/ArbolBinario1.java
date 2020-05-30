@@ -15,34 +15,55 @@ public class ArbolBinario1 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-
-        Nodo subIzq = new Nodo("+");
-        Nodo subDer = new Nodo("-");
+        Nodo raiz = new Nodo("+");
+        Nodo subIzq = new Nodo("*");
+        Nodo subDer = new Nodo("/");
         
-        subIzq.setIzquierdo(new Nodo("X"));
-        subIzq.setDerecho(new Nodo("Y"));
+        subIzq.setIzquierdo(new Nodo("a"));
+        subIzq.setDerecho(new Nodo("b"));
         
-        subDer.setIzquierdo(new Nodo("A"));
-        subDer.setDerecho(new Nodo("B"));
+        subDer.setIzquierdo(new Nodo("c"));
+        subDer.setDerecho(new Nodo("d"));
         
-        Nodo raiz = new Nodo(subIzq, "*", subDer);
+        raiz.setIzquierdo(subIzq);
+        raiz.setDerecho(subDer);
         
-        ImprimirAlRecorrer(raiz);
+        inorden(raiz);
+        System.out.println("\nNúmero de nodos de este árbol: " + numNodos(raiz));
         
     }
     
-    
-    
-    
-    
-    
-    private static void ImprimirAlRecorrer(Nodo raiz) {
-        if (raiz != null) {
-            ImprimirAlRecorrer(raiz.getIzquierdo());
-            System.out.print(raiz.getDato() + " ");
-            ImprimirAlRecorrer(raiz.gerDerecho());
+    // Recorrido preorden
+    public static void preorden(Nodo r) {
+        if (r != null) {
+            System.out.print(r.getDato() + " ");
+            preorden(r.getIzquierdo());
+            preorden(r.getDerecho());
         }
+    }
+    // Recorrido en orden (inorden)
+    public static void inorden(Nodo r) {
+        if (r != null) {
+            inorden(r.getIzquierdo());
+            System.out.print(r.getDato() + " ");
+            inorden(r.getDerecho());
+        }
+    }
+    // Recorrido postorden
+    public static void postorden(Nodo r) {
+        if (r != null) {
+            postorden(r.getIzquierdo());
+            postorden(r.getDerecho());
+            System.out.print(r.getDato() + " ");
+        }
+    }
+    
+    
+    public static int numNodos(Nodo r) {
+        if (r == null)
+            return 0;
+        else
+            return 1 + numNodos(r.getIzquierdo()) + numNodos(r.getDerecho());
     }
     
 }

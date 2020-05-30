@@ -43,12 +43,14 @@ public class Nodo {
         this.izquierdo = izq;
     }
     
-    public Nodo gerDerecho() {
+    public Nodo getDerecho() {
         return this.derecho;
     }
     public void setDerecho (Nodo der) {
         this.derecho = der;
     }
+    
+    
     
     
 }
